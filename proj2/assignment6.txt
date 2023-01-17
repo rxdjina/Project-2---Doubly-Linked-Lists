@@ -1,0 +1,51 @@
+1. 
+    [1] O(1)    if (head == NULL) {
+                    return;
+                }
+
+                Node *temp = head;
+                head = tail;
+                tail = temp;
+
+                Node *temp2 = head;
+
+    [2] O(n)    while (temp2 != NULL) { 
+                    temp = temp2->prev;
+                    temp2->prev = temp2->next;
+                    temp2->next = temp;
+                    temp2 = temp2->next;
+                }
+
+    O(n) + O(1) = O(n + 1) = O(n)
+
+The time complexity of our [1] is O(1). In this case, head, a variable, is being compared to NULL. This comparison will always run in 
+constant time. The time complexity of [2] is O(n). In the given while loop, we are iterating through a doubly linked list, then altering the previous and next pointers within each element to change the direction of the list. The worst-case scenario for this loop is O(n), where n equals the number of elements in a given list.
+
+Worst-case Time Complexity of reverse() is O(n).
+
+2. 
+
+    [1] O(n)    for (auto itr = mlist.begin(); itr != mlist.end(); itr++) {
+                    if (itr.current->data == len) {
+                        free_mem(len);
+                    }
+                }
+
+    [2] O(n)    for (int i = 0; i < len; i++) {
+                    mlist.insert(mlist.begin(), ind);
+                }
+                
+                bool valid_index = (ind >=0) && (ind <= max_index);
+                bool valid_length = (len >=0) && (ind <= len);
+
+                if (valid_index && valid_length) {
+                    return true;
+                } else {
+                    return false;
+                }
+    
+    O(n) + O(n) = O(2n) = O(n)
+
+The time complexity of [1] id O(n) given that it's an iteration over a list. The time complexity of [2] is O(n) given that it's a loop. The time complexity of release_mem is equal to O(n), where n is equal to the number of elements in a given memory block.
+
+Worst-case Time Complexity of releave_mem() is O(n).
